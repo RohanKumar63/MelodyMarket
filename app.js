@@ -37,7 +37,7 @@ app.use(flash());
 app.use("/", indexRouter);
 app.use("/owners", ownerRouter);
 app.use("/users", usersRouter);
-app.use("/product", productsRouter);
+app.use("/products", productsRouter);
 
 
 app.listen(3000);

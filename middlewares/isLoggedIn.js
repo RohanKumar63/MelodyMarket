@@ -7,11 +7,11 @@ module.exports = async (req, res, next) =>{
     req.flash("error", "you need to login");
     return res.redirect("/");
     }
-
+    
+else{
      try{
         let decode = jwt.verify(req.cookies.token, process.env.JWT_KEY);
-        let user = userModel.findOne({email: decode.email})
-        .select("-password");
+        let user = await userModel.findOne({email: decode.email}).select("-password");
 
         req.user = user;
 
@@ -21,8 +21,9 @@ module.exports = async (req, res, next) =>{
         req.flash("error", "somthing went wrong");
         res.redirect("/");
      }
-
+   }
 
 
 
 }
+

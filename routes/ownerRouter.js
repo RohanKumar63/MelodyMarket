@@ -30,7 +30,8 @@ let createdOwner = await ownerModel.create({
 }
 
 router.get("/admin" , (req,res)=>{
-    res.send("its working");
+    let success = req.flash("success");
+    res.render("createproducts" , {success});
 })
 
 module.exports = router; 
